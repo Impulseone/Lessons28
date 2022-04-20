@@ -1,4 +1,4 @@
-public class Result {
+public class First {
     public static int squirrel(int N) {
         int sum = N;
         for (int i = N - 1; i >= 1; i--) {
