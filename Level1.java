@@ -1,12 +1,9 @@
-public class Level1
-{
-    public static int squirrel(int N)
-    {
-        int sum = N;
-        for (int i = N - 1; i >= 1; i--) {
-            sum *= i;
+public class Level1 {
+    public static int squirrel(int N) {
+        int result = 1;
+        for (int i = 1; i <= N; i++) {
+            result = result * i;
         }
-        if (sum < 0) sum = sum * -1;
-        return Integer.parseInt(String.valueOf(Integer.toString(sum).toCharArray()[0]));
+        return Integer.parseInt(String.valueOf(Integer.toString(result).toCharArray()[0]));
     }
 }
