@@ -1,4 +1,4 @@
-public class First
+public class Level1
 {
     public static int squirrel(int N)
     {
