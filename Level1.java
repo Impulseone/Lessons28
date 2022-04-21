@@ -1,5 +1,7 @@
-public class Level1 {
-    public static int squirrel(int N) {
+public class Level1
+{
+    public static int squirrel(int N)
+    {
         int result = 1;
         for (int i = 1; i <= N; i++) {
             result = result * i;
