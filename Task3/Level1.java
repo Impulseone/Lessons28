@@ -72,8 +72,10 @@ public class Level1 {
 
     private static Field[] findBattalionFields(int[] battalion) {
         Field[] battalionFields = new Field[battalion.length / 2];
+        int counter = 0;
         for (int i = 0; i < battalionFields.length; i++) {
-            battalionFields[i] = new Field(battalion[i], battalion[i + 1], true);
+            battalionFields[i] = new Field(battalion[counter], battalion[counter + 1], true);
+            counter += 2;
         }
         return battalionFields;
     }
