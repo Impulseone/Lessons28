@@ -1,7 +1,7 @@
 public class Level1 {
     public static int[] MadMax(int N, int[] Tele) {
         int[] resultMas = new int[Tele.length];
-        if (N == 1) return new int[Tele[0]];
+        if (N == 1) return new int[]{Tele[0]};
         else {
             int middleElementPos = Tele.length / 2;
             sortToMax(Tele);
