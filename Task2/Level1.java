@@ -1,3 +1,5 @@
+package Task2;
+
 public class Level1
 {
     public static int odometer(int[] oksana)

@@ -1,3 +1,5 @@
+package Task4;
+
 public class Level1 {
     public static int[] MadMax(int N, int[] Tele) {
         int[] resultMas = new int[Tele.length];

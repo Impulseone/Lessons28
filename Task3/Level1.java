@@ -1,3 +1,8 @@
+package Task3;
+
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Level1 {
     public static int ConquestCampaign(int N, int M, int L, int[] battalion) {
         int daysCount = 1;
