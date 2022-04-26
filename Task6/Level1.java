@@ -32,7 +32,7 @@ public class Level1 {
         return list;
     }
 
-    private class Pair {
+    private static class Pair {
         private final int a;
         private final int b;
 
