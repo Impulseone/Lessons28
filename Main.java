@@ -1,9 +1,7 @@
-import Task5.Level1;
-
-import java.util.Arrays;
+import Task6.Level1;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(Level1.SynchronizingTables(3, new int[]{3,9}, new int[]{8,1})));
+        System.out.println(Level1.PatternUnlock(10, new int[]{1, 2, 3, 4, 5, 6, 2, 7, 8, 9}));
     }
 }

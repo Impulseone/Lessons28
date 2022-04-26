@@ -1,3 +1,8 @@
+package Task5;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class Level1 {
     public static int[] SynchronizingTables(int N, int[] ids, int[] salary) {
         int[] idsBeforeSorting = Arrays.copyOf(ids, ids.length);
