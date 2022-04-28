@@ -15,7 +15,13 @@ public class Level1 {
             int count = string.length() % len == 0 ? currentStringLengthHalf : currentStringLengthHalf + 1;
             int counter = 0;
             for (int j = 0; j < count; j++) {
-                String substring = string.substring(counter, j + len);
+                int endPoint = counter + len;
+                String substring;
+                if (endPoint <= string.length()) {
+                    substring = string.substring(counter, counter + len);
+                } else {
+                    substring = string.substring(counter);
+                }
                 result.add(substring);
                 counter += len;
             }
