@@ -11,11 +11,13 @@ public class Level1 {
                 result.add(string);
                 continue;
             }
-            int currentStringLengthHalf = string.length() / 2;
-            int count = string.length() % 2 == 0 ? currentStringLengthHalf : currentStringLengthHalf + 1;
+            int currentStringLengthHalf = string.length() / len;
+            int count = string.length() % len == 0 ? currentStringLengthHalf : currentStringLengthHalf + 1;
+            int counter = 0;
             for (int j = 0; j < count; j++) {
-                String substring = string.substring(j, j + len);
+                String substring = string.substring(counter, j + len);
                 result.add(substring);
+                counter += len;
             }
         }
         return result.toArray(String[]::new);
