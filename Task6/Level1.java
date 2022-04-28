@@ -1,3 +1,8 @@
+package Task6;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Level1 {
     public static String PatternUnlock(int N, int[] hits) {
         List<Pair> pairs = shortPathsList();
