@@ -6,21 +6,21 @@ public class Level1 {
 
     public static int findNumber(int[] data) {
         int result = 0;
-        for (int datum : data) {
-            int sum = calculateSum(data, datum);
-            if (datum == sum) {
-                result = datum;
+        for (int i = 0; i < data.length; i++) {
+            int sum = calculateSum(data, i);
+            if (data[i] == sum) {
+                result = data[i];
                 break;
             }
         }
         return result;
     }
 
-    public static int calculateSum(int[] data, int excludedElement) {
+    public static int calculateSum(int[] data, int excludedElementPos) {
         int result = 0;
-        for (int number : data) {
-            if (number == excludedElement) continue;
-            result += number;
+        for (int i = 0; i < data.length; i++) {
+            if (i == excludedElementPos) continue;
+            result += data[i];
         }
         return result;
     }
