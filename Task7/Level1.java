@@ -1,3 +1,7 @@
+package Task7;
+
+import java.util.ArrayList;
+
 public class Level1 {
     public static int[] WordSearch(int len, String s, String subs) {
         return findString(splitByLength(splitString(s, len), len), subs);
