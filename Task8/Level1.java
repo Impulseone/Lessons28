@@ -1,3 +1,5 @@
+package Task8;
+
 public class Level1 {
     public static int SumOfThe(int N, int[] data) {
         if (N == 2) return data[0];
