@@ -1,3 +1,5 @@
+package Task9;
+
 public class Level1 {
     public static String TheRabbitsFoot(String s, boolean encode) {
         if (encode) {
