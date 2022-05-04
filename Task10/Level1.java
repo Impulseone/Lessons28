@@ -1,3 +1,8 @@
+package Task10;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Level1 {
     public static int PrintingCosts(String Line) {
         Map<Character, Integer> map = new HashMap<>(95);
