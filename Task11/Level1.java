@@ -12,13 +12,14 @@ public class Level1 {
     }
 
     private static String standardMinus(int[] reversed1, int[] reversed2) {
+        if (reversed1.length == 1 && reversed2.length == 1) {
+            return oneNumberMinus(reversed1, reversed2);
+        }
+        if (Arrays.equals(reversed1, reversed2)) return "0";
         boolean needRevert = false;
         int[] start1 = Arrays.copyOf(reversed1, reversed1.length);
         int[] start2 = Arrays.copyOf(reversed2, reversed2.length);
         StringBuilder result = new StringBuilder();
-        if (reversed1.length == 1 && reversed2.length == 1)
-            return result.append(reversed1[0] - reversed2[0]).toString();
-        if (Arrays.equals(reversed1, reversed2)) return result.append(0).toString();
         for (int i = 0; i < reversed1.length; i++) {
             int minus = reversed1[i] - reversed2[i];
             if (minus >= 0) {
@@ -41,6 +42,14 @@ public class Level1 {
             return removeFirstZerosFromString(resultString);
         }
         return resultString;
+    }
+
+    private static String oneNumberMinus(int[] reversed1, int[] reversed2) {
+        StringBuilder result = new StringBuilder();
+        int k1 = reversed1[0];
+        int k2 = reversed2[0];
+        if (k1 - k2 < 0) return result.append(k2 - k1).toString();
+        else return result.append(k1 - k2).toString();
     }
 
     private static int[] convertToIntArray(char[] chars) {
