@@ -1,3 +1,4 @@
+package Task12;
 public class Level1 {
     public static String MassVote(int N, int[] Votes) {
         int[] max = findMax(N, Votes);
