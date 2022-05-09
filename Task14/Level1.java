@@ -1,3 +1,5 @@
+package Task14;
+
 public class Level1 {
     public static int Unmanned(int L, int N, int[][] track) {
         TrafficLight[] trafficLights = createTrafficLightsArray(N, track);
@@ -14,10 +16,8 @@ public class Level1 {
 
     private static boolean isRed(int coordinate, int time, TrafficLight[] trafficLights) {
         for (TrafficLight trafficLight : trafficLights) {
-            if (trafficLight.coordinate == coordinate) {
-                if (trafficLight.getRedState(time)) {
-                    return true;
-                }
+            if (trafficLight.coordinate == coordinate && trafficLight.getRedState(time)) {
+                return true;
             }
         }
         return false;
