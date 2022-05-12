@@ -1,3 +1,9 @@
+package Task15;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 public class Level1 {
     public static boolean TankRush(int H1, int W1, String S1, int H2, int W2, String S2) {
         Field field1 = Field.createFromStringsArray(S1.split(" "));
