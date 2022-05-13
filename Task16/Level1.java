@@ -1,7 +1,9 @@
 public class Level1 {
     public static int MaximumDiscount(int N, int[] price) {
         int[] sorted = sortToMin(price);
-        if (N <= 5) return sorted[sorted.length - 1];
+        if (N < 3) {
+            return 0;
+        } else if (N < 6) return sorted[sorted.length - 1];
         return calculateDiscount(splitArray(sorted));
     }
 
