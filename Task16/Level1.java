@@ -3,8 +3,7 @@ public class Level1 {
         int[] sorted = sortToMin(price);
         if (N < 3) {
             return 0;
-        } else if (N < 6) return sorted[sorted.length - 1];
-        return calculateDiscount(splitArray(sorted));
+        } else return calculateDiscount(splitArray(sorted));
     }
 
     private static int[] sortToMin(int[] mas) {
