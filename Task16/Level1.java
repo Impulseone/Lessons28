@@ -1,3 +1,8 @@
+package Task16;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Level1 {
     public static int MaximumDiscount(int N, int[] price) {
         int[] sorted = sortToMin(price);
