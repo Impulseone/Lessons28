@@ -6,22 +6,21 @@ public class Level1 {
     private static boolean checkElements(int N, int[] data) {
         int[] sorted = sortToMax(data);
         boolean result = true;
-
         while (result) {
             if (Arrays.equals(sorted, data)) {
                 break;
             }
             for (int i = 0; i < N - 2; i++) {
                 int[] array = new int[]{data[i], data[i + 1], data[i + 2]};
-                if (isChangeResolvable(array)) {
-                    int[] newArray = changeElements(i, array, data);
-                    if (!Arrays.equals(newArray, data)) {
-                        result = true;
-                        data = newArray;
-                        break;
-                    }
-                } else {
+                if (!isChangeResolvable(array)) {
                     result = false;
+                    continue;
+                }
+                int[] newArray = changeElements(i, array, data);
+                if (!Arrays.equals(newArray, data)) {
+                    result = true;
+                    data = newArray;
+                    break;
                 }
             }
         }
@@ -32,10 +31,8 @@ public class Level1 {
     private static boolean isChangeResolvable(int[] array) {
         while (true) {
             if ((array[0] > array[1] && array[1] > array[2])) return false;
-            else if ((array[0] < array[1] && array[1] < array[2])) return true;
-            else {
-                array = new int[]{array[1], array[2], array[0]};
-            }
+            if ((array[0] < array[1] && array[1] < array[2])) return true;
+            array = new int[]{array[1], array[2], array[0]};
         }
     }
 
