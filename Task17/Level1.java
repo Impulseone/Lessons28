@@ -1,3 +1,5 @@
+package Task17;
+
 public class Level1 {
     public static boolean LineAnalysis(String line) {
         return calculatePattern(line);
