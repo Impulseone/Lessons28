@@ -1,3 +1,7 @@
+package Task18;
+
+import java.util.Arrays;
+
 public class Level1 {
     public static boolean MisterRobot(int N, int[] data) {
         return checkElements(N, data);
