@@ -43,12 +43,16 @@ public class Level1 {
         }
 
         String getI(int i) {
-            if (i > currentString.length()) return "";
-            return currentString.substring(i, i + 1);
+            char[] chars = currentString.toCharArray();
+            if (i >= currentString.length()) return "";
+            return String.valueOf(chars[i]);
         }
 
         void undo() {
-            if (position > 0) position -= 1;
+            if (position > 0) {
+                position -= 1;
+                currentString = changesList.get(position);
+            }
         }
 
         void redo() {
