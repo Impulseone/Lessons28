@@ -56,7 +56,10 @@ public class Level1 {
         }
 
         void redo() {
-            if (position < changesList.size() - 1) position += 1;
+            if (position < changesList.size() - 1) {
+                position += 1;
+                currentString = changesList.get(position);
+            }
         }
 
         void clearOperationsIfNeeded() {
