@@ -1,3 +1,8 @@
+package Task19;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Level1 {
     public static String[] ShopOLAP(int N, String[] items) {
         List<Product> oldProducts = new ArrayList<>();
