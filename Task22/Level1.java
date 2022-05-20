@@ -44,6 +44,10 @@ public class Level1 {
     }
 
     private static boolean checkEqualityCase(List<Bukva> list, Bukva bukva) {
+        if (list.size() == 2) {
+            int difference = list.get(0).count - list.get(1).count;
+            return difference < 2;
+        }
         List<Bukva> bukvas = new ArrayList<>(list);
         bukvas.remove(bukva);
         for (int i = 0, bukvasSize = bukvas.size() - 1; i < bukvasSize; i++) {
