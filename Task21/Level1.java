@@ -41,7 +41,9 @@ public class Level1 {
                 biggerThanInput.add(list.get(i));
             }
         }
-        return findMinInBiggers(biggerThanInput);
+        if (biggerThanInput.size() > 0)
+            return findMinInBiggers(biggerThanInput);
+        return "";
     }
 
     private static String findMinInBiggers(List<String> biggers) {
