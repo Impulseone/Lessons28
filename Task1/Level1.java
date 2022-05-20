@@ -1,3 +1,5 @@
+package Task1;
+
 public class Level1
 {
     public static int squirrel(int N)
