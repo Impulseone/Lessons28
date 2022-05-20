@@ -1,8 +1,9 @@
 public class Level1 {
 
-    static ArrayList<String> list = new ArrayList<>();
+    static ArrayList<String> list;
 
     public static String BiggerGreater(String input) {
+        list = new ArrayList<>();
         boolean checkPossibility = checkPossibilityOfChange(input);
         if (checkPossibility) {
             permutation(input);
