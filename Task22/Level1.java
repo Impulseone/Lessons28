@@ -1,3 +1,8 @@
+package Task22;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Level1 {
     public static boolean SherlockValidString(String s) {
         return checkSymbols(s);
