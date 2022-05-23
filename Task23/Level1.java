@@ -12,7 +12,7 @@ public class Level1 {
                 stickArray.incrementAge();
             }
         }
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < H; i++) {
             resultStringArray[i] = stickArrays[i].toString();
         }
         return resultStringArray;
