@@ -1,22 +1,110 @@
 public class Level1 {
     public static String[] TreeOfLife(int H, int W, int N, String[] tree) {
-        String[] resultStringArray = new String[H];
-        StickArray[] stickArrays = new StickArray[H];
-        for (int i = 0; i < H; i++) {
-            String currentString = tree[i];
-            StickArray stickArray = new StickArray(fromStringToArray(currentString));
-            stickArrays[i] = stickArray;
-        }
-        for (int i = 0; i < N; i++) {
-            for (StickArray stickArray : stickArrays) {
-                stickArray.incrementAge();
+        ArrayList<StickCoordinate> stickCoordinates = new ArrayList<>();
+        for (int i = 0; i < tree.length; i++) {
+            String s = tree[i];
+            int[] line = fromStringToArray(s);
+            for (int j = 0; j < line.length; j++) {
+                StickCoordinate stickCoordinate = new StickCoordinate(j + 1, i + 1, line[j]);
+                stickCoordinates.add(stickCoordinate);
             }
         }
-        for (int i = 0; i < H; i++) {
-            resultStringArray[i] = stickArrays[i].toString();
+        Tree coordinatesTree = new Tree(stickCoordinates.toArray(new StickCoordinate[0]), W, H);
+        for (int i = 0; i < N; i++) {
+            coordinatesTree.incrementYear();
         }
-        return resultStringArray;
+        return coordinatesTree.toStringArray();
     }
+
+    private static class Tree {
+        StickCoordinate[] coordinates;
+        int year = -1;
+
+        final int W;
+        final int H;
+
+        public Tree(StickCoordinate[] coordinates, int w, int h) {
+            this.coordinates = coordinates;
+            W = w;
+            H = h;
+        }
+
+        public void incrementYear() {
+            for (StickCoordinate coordinate : coordinates) {
+                coordinate.incrementAge();
+            }
+            year += 1;
+            checkStickAge();
+        }
+
+        private void checkStickAge() {
+            if (year % 2 == 0) return;
+            StickCoordinate[] coordinatesNew = Arrays.copyOf(coordinates, coordinates.length);
+            for (StickCoordinate stickCoordinate : coordinates) {
+                int x = stickCoordinate.x;
+                int y = stickCoordinate.y;
+                if (stickCoordinate.age >= 3) {
+                    stickCoordinate.age = 0;
+                    setZeroAgeOfCoordinate(coordinatesNew, x - 1, y);
+                    setZeroAgeOfCoordinate(coordinatesNew, x, y - 1);
+                    setZeroAgeOfCoordinate(coordinatesNew, x + 1, y);
+                    setZeroAgeOfCoordinate(coordinatesNew, x, y + 1);
+                }
+            }
+            coordinates = coordinatesNew;
+        }
+
+        private void setZeroAgeOfCoordinate(StickCoordinate[] stickCoordinatesNew, int x, int y) {
+            for (int i = 0; i < coordinates.length; i++) {
+                if (coordinates[i].x == x && coordinates[i].y == y) {
+                    stickCoordinatesNew[i].setZeroAge();
+                }
+            }
+        }
+
+        private String[] toStringArray() {
+            ArrayList<String> resultList = new ArrayList<>();
+            for (int i = 0; i < H; i++) {
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int j = 1; j <= W; j++) {
+                    stringBuilder.append(findStickAge(j, i + 1));
+                }
+                String line = toSymbols(stringBuilder.toString());
+                resultList.add(line);
+            }
+            return resultList.toArray(new String[0]);
+        }
+
+        private int findStickAge(int x, int y) {
+            for (StickCoordinate coordinate : coordinates) {
+                if (coordinate.x == x && coordinate.y == y) {
+                    return coordinate.age;
+                }
+            }
+            return -1;
+        }
+    }
+
+    private static class StickCoordinate {
+        final int x;
+        final int y;
+        int age;
+
+        public StickCoordinate(int x, int y, int age) {
+            this.x = x;
+            this.y = y;
+            this.age = age;
+        }
+
+        public void incrementAge() {
+            age += 1;
+        }
+
+        public void setZeroAge() {
+            age = 0;
+        }
+    }
+
 
     private static int[] fromStringToArray(String treeElement) {
         char[] chars = treeElement.toCharArray();
@@ -28,41 +116,13 @@ public class Level1 {
         return array;
     }
 
-    private static class StickArray {
-        int[] sticksAge;
-        int year = -1;
-
-        public StickArray(int[] sticksAge) {
-            this.sticksAge = sticksAge;
+    private static String toSymbols(String s) {
+        StringBuilder stringBuilder = new StringBuilder();
+        char[] chars = s.toCharArray();
+        for (char aChar : chars) {
+            if (aChar != '0') stringBuilder.append('+');
+            else stringBuilder.append('.');
         }
-
-        public void incrementAge() {
-            for (int j = 0; j < sticksAge.length; j++) {
-                sticksAge[j] = sticksAge[j] + 1;
-            }
-            year += 1;
-            checkStickAge();
-        }
-
-        private void checkStickAge() {
-            if (year % 2 == 0) return;
-            int[] sticksAgeNew = Arrays.copyOf(sticksAge, sticksAge.length);
-            for (int i = 0; i < sticksAge.length; i++) {
-                if (sticksAge[i] >= 3) sticksAgeNew[i] = 0;
-                if (i > 0 && sticksAge[i] >= 3) sticksAgeNew[i - 1] = 0;
-                if (i < sticksAge.length - 1 && sticksAge[i] >= 3) sticksAgeNew[i + 1] = 0;
-            }
-            sticksAge = sticksAgeNew;
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i : sticksAge) {
-                if (i != 0) stringBuilder.append("+");
-                else stringBuilder.append(".");
-            }
-            return stringBuilder.toString();
-        }
+        return stringBuilder.toString();
     }
 }
