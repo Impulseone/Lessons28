@@ -39,12 +39,12 @@ public class Level1 {
 
         private void checkStickAge() {
             if (year % 2 == 0) return;
-            StickCoordinate[] coordinatesNew = Arrays.copyOf(coordinates, coordinates.length);
+            StickCoordinate[] coordinatesNew = copyArray(coordinates);
             for (StickCoordinate stickCoordinate : coordinates) {
                 int x = stickCoordinate.x;
                 int y = stickCoordinate.y;
                 if (stickCoordinate.age >= 3) {
-                    stickCoordinate.age = 0;
+                    setZeroAgeOfCoordinate(coordinatesNew, x, y);
                     setZeroAgeOfCoordinate(coordinatesNew, x - 1, y);
                     setZeroAgeOfCoordinate(coordinatesNew, x, y - 1);
                     setZeroAgeOfCoordinate(coordinatesNew, x + 1, y);
@@ -60,6 +60,15 @@ public class Level1 {
                     stickCoordinatesNew[i].setZeroAge();
                 }
             }
+        }
+
+        private StickCoordinate[] copyArray(StickCoordinate[] coordinates) {
+            StickCoordinate[] result = new StickCoordinate[coordinates.length];
+            for (int i = 0, coordinatesLength = coordinates.length; i < coordinatesLength; i++) {
+                StickCoordinate stickCoordinate = coordinates[i];
+                result[i] = new StickCoordinate(stickCoordinate.x, stickCoordinate.y, stickCoordinate.age);
+            }
+            return result;
         }
 
         private String[] toStringArray() {
