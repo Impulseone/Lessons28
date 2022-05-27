@@ -1,3 +1,7 @@
+package Task25;
+
+import java.util.ArrayList;
+
 public class Level1 {
     public static boolean TransformTransform(int[] A, int N) {
         ArrayList<Integer> firstList = S(A, N);
@@ -29,7 +33,6 @@ public class Level1 {
         int[] array = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
-            ;
         }
         return array;
     }
