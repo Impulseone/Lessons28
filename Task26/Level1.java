@@ -1,3 +1,5 @@
+package Task26;
+
 public class Level1 {
     public static boolean white_walkers(String village) {
         return calculate(village);
