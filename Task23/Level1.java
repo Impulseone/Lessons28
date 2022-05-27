@@ -1,3 +1,7 @@
+package Task23;
+
+import java.util.ArrayList;
+
 public class Level1 {
     public static String[] TreeOfLife(int H, int W, int N, String[] tree) {
         ArrayList<StickCoordinate> stickCoordinates = new ArrayList<>();
