@@ -8,18 +8,16 @@ public class Level1 {
         int zombiesCount = 0;
         int lastInt = -1;
         char[] chars = village.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            char symbol = chars[i];
-            if (isInt(symbol)) {
-                int currentInt = Integer.parseInt(String.valueOf(symbol));
-                boolean sumIsTen = currentInt + lastInt == 10;
-                if (sumIsTen) isZombiesExist = zombiesCount == 3;
-                lastInt = currentInt;
-                zombiesCount = 0;
-            }
+        for (char symbol : chars) {
             if (isZombie(symbol)) {
                 zombiesCount += 1;
             }
+            if (!isInt(symbol)) continue;
+            int currentInt = Integer.parseInt(String.valueOf(symbol));
+            boolean sumIsTen = currentInt + lastInt == 10;
+            if (sumIsTen) isZombiesExist = zombiesCount == 3;
+            lastInt = currentInt;
+            zombiesCount = 0;
         }
         return isZombiesExist;
     }
