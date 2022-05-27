@@ -1,3 +1,7 @@
+package Task24;
+
+import java.util.ArrayList;
+
 public class Level1 {
     public static void MatrixTurn(String[] Matrix, int M, int N, int T) {
         int[][] matrix = parseToIntArray(Matrix, M, N);
