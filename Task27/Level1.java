@@ -1,3 +1,7 @@
+package Task27;
+
+import java.util.Arrays;
+
 public class Level1 {
     public static boolean Football(int[] F, int N) {
         int[] sortedArray = sortToMax(F);
