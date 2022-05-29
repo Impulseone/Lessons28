@@ -1,3 +1,7 @@
+package Task28;
+
+import java.util.Arrays;
+
 public class Level1 {
     public static String Keymaker(int k) {
         int[] array = new int[k];
